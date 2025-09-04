@@ -341,7 +341,7 @@
       const float offsetSpeed = 1.33 * overallSpeed;
       const float minOffsetSpread = 0.6;
       const float maxOffsetSpread = 2.0;
-      const int linesPerGroup = 8; // Reduced for better mobile performance
+      const int linesPerGroup = 4; // Reduced further for better performance
 
       #define drawCircle(pos, radius, coord) smoothstep(radius + gridSmoothWidth, radius, length(coord - (pos)))
       #define drawSmoothLine(pos, halfWidth, t) smoothstep(halfWidth, 0.0, abs(pos - (t)))
@@ -490,8 +490,8 @@
       };
 
       function resizeCanvas() {
-        canvas.width = window.innerWidth * window.devicePixelRatio;
-        canvas.height = window.innerHeight * window.devicePixelRatio;
+        canvas.width = window.innerWidth * Math.min(window.devicePixelRatio, 2);
+        canvas.height = window.innerHeight * Math.min(window.devicePixelRatio, 2);
         canvas.style.width = window.innerWidth + 'px';
         canvas.style.height = window.innerHeight + 'px';
         gl.viewport(0, 0, canvas.width, canvas.height);
@@ -501,7 +501,12 @@
       resizeCanvas();
 
       let startTime = Date.now();
+      let frameId;
+      let isVisible = !document.hidden;
+
       function render() {
+        if (!isVisible) return;
+
         const currentTime = (Date.now() - startTime) / 1000;
 
         gl.clearColor(0.0, 0.0, 0.0, 1.0);
@@ -524,9 +529,19 @@
         gl.enableVertexAttribArray(programInfo.attribLocations.vertexPosition);
 
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-        requestAnimationFrame(render);
+        frameId = requestAnimationFrame(render);
       }
-      requestAnimationFrame(render);
+      if (isVisible) render();
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          isVisible = false;
+          cancelAnimationFrame(frameId);
+        } else {
+          isVisible = true;
+          render();
+        }
+      });
     }
 
     document.addEventListener('DOMContentLoaded', initWebGL);
