@@ -6,7 +6,7 @@
   <title>Mogasoft — حلول بلا حدود</title>
   <meta name="theme-color" content="#b80f5b" />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
   <link rel="icon" href="mogasoft-white.png" type="image/png">
   <style>
     :root {
@@ -101,6 +101,11 @@
       background: #333;
     }
 
+    .socials a.snapchat:hover {
+      background: #FFFC00;
+      color: #000;
+    }
+
     .socials a.youtube:hover {
       background: red;
     }
@@ -168,6 +173,7 @@
       font-size: 14px;
       color: var(--muted);
       line-height: 1.6;
+      margin: 0;
     }
     .actions {
       display: flex;
@@ -198,7 +204,7 @@
       z-index: 1;
     }
     .mt-3{
-      margin-top: 15px;
+      margin-top: 10px;
     }
     .btn::before {
       content: '';
@@ -266,15 +272,15 @@
     <div class="blob"></div>
     <div class="brand">
       <div class="logo">
-        <img src="mogasoft-white.png" alt="Mogasoft Logo">
+        <img src="mogasoft-white.png" alt="Mogasoft Logo" loading="lazy">
       </div>
       <div>
         <div class="title">موجاسوفت للحلول المتكاملة</div>
         <div class="tag">حلول بلا حدود — Web · Mobile · Digital Marketing</div>
       </div>
     </div>
-    <h2>لو بتدور على فريق يحللك المشاكل ويبنيلك حل حقيقي</h2>
-    <p class="lead">شركة متخصصة في حلول البرمجة المتكاملة — مواقع، تطبيقات موبايل، وتسويق رقمي.</p>
+    <h2>خليك سابق بخطوة … مع فريق بيحوّل أفكارك لحلول حقيقية</h2>
+    <p class="lead">مواقع إلكترونية، تطبيقات موبايل، وتسويق رقمي بإحتراف</p>
     
     <div class="socials">
       <a href="https://www.facebook.com/share/19fc5vDV3m/?mibextid=wwXIfr" target="_blank" class="facebook">
@@ -303,7 +309,7 @@
     </div>
     <a class="btn mt-3" href="mogasoft.vcf" download>💾 حفظ جهة الاتصال</a>
     
-    <div class="chip">📍 1 محور عدلي منصور - جسر السويس - القاهرة</div>
+    <div class="chip">📍 252 شارع ترعة الجبل - حدائق الزيتون - القاهرة</div>
     <div class="chip">✉️ info@mogasoft.net</div>
     <div class="meta">تصميم بواسطة فريق © <a class="text-link" href="https://mogasoft.net/home" target="_blank">Mogasoft</a></div>
   </section>
